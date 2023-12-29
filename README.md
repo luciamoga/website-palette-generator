@@ -1,1 +1,1 @@
-# website-palette-gemerator
+# website-palette-generator
