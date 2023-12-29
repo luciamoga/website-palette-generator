@@ -1,0 +1,60 @@
+.heroSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: offwhite;
+
+  font-size: calc(10px + 2vmin);
+  color: gray;
+  gap: 5rem;
+
+  .heroHeading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: black;
+  }
+
+  .heroSubheading {
+    font-size: 2rem;
+    font-weight: 400;
+    color: black;
+  }
+
+  .heroText {
+    flex-grow: 2;
+  }
+
+  .colorSettings {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .howItWorks {
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    .stepper {
+      .MuiStepLabel-labelContainer span {
+        font-size: 2rem;
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      justify-content: space-evenly;
+
+      .stepHeading {
+        font-size: 2rem;
+        font-weight: 700;
+        color: black;
+      }
+      .stepDescription {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: black;
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+.heroSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: offwhite;
+  font-size: calc(10px + 2vmin);
+  color: gray;
+  gap: 5rem;
+}
+.heroSection .heroHeading {
+  font-size: 3rem;
+  font-weight: 700;
+  color: black;
+}
+.heroSection .heroSubheading {
+  font-size: 2rem;
+  font-weight: 400;
+  color: black;
+}
+.heroSection .heroText {
+  flex-grow: 2;
+}
+.heroSection .colorSettings {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.heroSection .howItWorks {
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.heroSection .howItWorks .stepper {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-evenly;
+}
+.heroSection .howItWorks .stepper .MuiStepLabel-labelContainer span {
+  font-size: 2rem;
+}
+.heroSection .howItWorks .stepper .stepHeading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+}
+.heroSection .howItWorks .stepper .stepDescription {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: black;
+}/*# sourceMappingURL=hero.css.map */

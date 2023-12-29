@@ -1,0 +1,48 @@
+.pageContainer {
+  border-radius: 1rem;
+  margin: 3vw 3vw 3vw 3vw;
+  background-color: white;
+  padding: 4rem;
+
+  .templates {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .paletteGenerator {
+    display: flex;
+    .paletteSettings {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      padding-bottom: 2rem;
+    }
+  }
+}
+//define style for larger screens
+@media (max-width: 1024px) {
+  .pageContainer {
+    .paletteGenerator {
+      flex-direction: column;
+    }
+  }
+}
+
+// define style for smaller screens
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+}
+
+// define style for even smaller screens
+@media (max-width: 480px) {
+  .pageContainer {
+    padding: 1rem;
+    .paletteGenerator {
+      flex-direction: column;
+    }
+  }
+}

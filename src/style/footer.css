@@ -1,0 +1,8 @@
+.footer .footerNav {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.footer p {
+  margin-top: 1rem;
+}/*# sourceMappingURL=footer.css.map */
