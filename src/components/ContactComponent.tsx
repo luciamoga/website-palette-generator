@@ -1,16 +1,16 @@
 //Simple Contact Component
 
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 interface ContactComponentProps {}
 
 const ContactComponent = ({}: ContactComponentProps) => {
   return (
     <React.Fragment>
-      <Box>
+      <div>
         <Typography variant="h1">Contact</Typography>
-      </Box>
+      </div>
     </React.Fragment>
   );
 };

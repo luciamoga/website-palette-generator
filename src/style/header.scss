@@ -3,7 +3,8 @@
   align-items: center;
   justify-content: center;
   min-height: 12vh;
-  font-size: calc(10px + 2vmin);
+  // font-size: calc(10px + 2vmin);
+  font-size: 2rem;
   color: black;
   background-color: white;
   padding: 1rem;
@@ -20,11 +21,12 @@
   }
 
   .logo {
-    height: 8vmin;
+    height: 5vw;
     pointer-events: none;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    font-size: 2rem;
 
     img {
       height: 100%;

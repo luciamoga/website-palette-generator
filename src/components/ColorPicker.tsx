@@ -20,8 +20,8 @@ const ColorPicker = ({ onSelectColor, initialColor }: ColorPickerProps) => {
     });
 
     colorPickerRef.current.on("color:change", (color: any) => {
-      setColor(new Color({ hex: color.hexString, type: "primary" }));
-      onSelectColor(new Color({ hex: color.hexString, type: "primary" }));
+      setColor(new Color({ hex: color.hexString }));
+      onSelectColor(new Color({ hex: color.hexString }));
     });
 
     onSelectColor(color);

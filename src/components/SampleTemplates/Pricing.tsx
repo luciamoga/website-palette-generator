@@ -7,7 +7,6 @@ import {
   CardContent,
   CardHeader,
   Container,
-  CssBaseline,
   GlobalStyles,
   Grid,
   Typography,
@@ -150,9 +149,7 @@ export default function PricingComponent() {
       <GlobalStyles
         styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
       />
-      <CssBaseline />
 
-      {/* Hero unit */}
       <Container
         disableGutters
         maxWidth="sm"
@@ -163,17 +160,12 @@ export default function PricingComponent() {
           component="h1"
           variant="h2"
           align="center"
-          color="text.surface"
+          color="black"
           gutterBottom
         >
           Pricing
         </Typography>
-        <Typography
-          variant="h5"
-          align="center"
-          color="text.surface"
-          component="p"
-        >
+        <Typography variant="h5" align="center" color="black" component="p">
           Quickly build an effective pricing table for your potential customers
           with this layout. It&apos;s built with default MUI components with
           little customization.
@@ -196,27 +188,7 @@ export default function PricingComponent() {
           mt: 8,
           py: [3, 6],
         }}
-      >
-        {/* <Grid container spacing={4} justifyContent="space-evenly">
-          {footers.map((footer) => (
-            <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="text.background" gutterBottom>
-                {footer.title}
-              </Typography>
-              <ul>
-                {footer.description.map((item) => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="text.background">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
-        </Grid> */}
-      </Container>
-      {/* End footer */}
+      ></Container>
     </React.Fragment>
   );
 }

@@ -2,24 +2,14 @@
 
 export class Color {
   hex: string = "000000";
-  type: string;
-  constructor({
-    hex,
-    hsl,
-    type,
-  }: {
-    hex?: string;
-    hsl?: [number, number, number];
-    type: string;
-  }) {
+  constructor({ hex, hsl }: { hex?: string; hsl?: [number, number, number] }) {
     if (hex) {
       this.hex = hex;
     } else if (hsl) {
       this.hex = this.hslToHex(hsl);
     } else {
-      console.log("Either hex or hsl must be defined for type " + type);
+      console.log("Either hex or hsl must be defined");
     }
-    this.type = type;
   }
 
   get hsl(): [number, number, number] {
@@ -30,6 +20,10 @@ export class Color {
     return this.hexToRGB(this.hex);
   }
 
+  getSaturation(): number {
+    return this.hsl[1];
+  }
+
   get luminance(): number {
     let a = this.rgb.map(function (v) {
       v /= 255;
@@ -38,9 +32,6 @@ export class Color {
     return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
   }
 
-  toObject() {
-    return { [this.type]: `#${this.hex}` };
-  }
   getErrorVariant() {
     // Convert the main color to HSL
     const hslMain = this.rgbToHSL(this.hex);
@@ -55,22 +46,67 @@ export class Color {
     // Convert the error color back to your desired format, e.g., HEX
     const hexError = this.hslToHex([hslError.h, hslError.s, hslError.l]);
 
-    return new Color({ hex: hexError, type: "error" });
+    return new Color({ hex: hexError });
   }
 
   clone(): Color {
-    return new Color({ hex: this.hex, type: this.type });
+    return new Color({ hex: this.hex });
   }
 
-  rename(newName: string): Color {
-    this.type = newName;
-    return this;
+  getVariant(): Color {
+    const lumThreshold = { low: 0.3, high: 0.7 };
+    const satThreshold = { low: 30, high: 70 };
+
+    if (
+      this.luminance > lumThreshold.high &&
+      this.getSaturation() > satThreshold.high
+    ) {
+      return this.clone().darken(20);
+    } else if (this.luminance < lumThreshold.low) {
+      return this.clone().lighten(20);
+    } else {
+      return this.clone().darken(10);
+    }
+  }
+
+  getRedVariant(): Color {
+    let saturation = Math.min(this.hsl[1] * 1.2, 100);
+    let lightness = this.hsl[2] > 50 ? 50 : this.hsl[2];
+    return new Color({
+      hsl: [0, saturation, lightness], // 0 is the hue for red
+    });
+  }
+
+  getContrasting(): Color {
+    return this.luminance > 0.5
+      ? this.clone().darken(90)
+      : this.clone().lighten(90);
   }
 
   getComplimentary(): Color {
     let [h, s, l] = this.hsl;
     h = (h + 180) % 360;
-    return new Color({ hsl: [h, s, l], type: this.type });
+    return new Color({ hsl: [h, s, l] });
+  }
+
+  getLighter(amount: number): Color {
+    return this.clone().lighten(amount);
+  }
+
+  getDarker(amount: number): Color {
+    return this.clone().darken(amount);
+  }
+
+  getMoreSaturated(amount: number): Color {
+    return this.clone().saturate(amount);
+  }
+
+  getLessSaturated(amount: number): Color {
+    return this.clone().desaturate(amount);
+  }
+
+  getRotated(amount: number): Color {
+    return this.clone().rotate(amount);
   }
 
   lighten(amount: number): Color {

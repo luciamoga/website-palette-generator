@@ -1,68 +1,46 @@
-//Harmony picker component that contains a list of color harmonies and radio buttons to select them. The component doesn't receive any data, but it sends the selected harmony to the parent component.
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { Harmony } from "../types/Harmony";
 import {
-  Box,
-  FormControl,
-  InputLabel,
   Select,
   MenuItem,
+  FormControl,
+  InputLabel,
   SelectChangeEvent,
 } from "@mui/material";
+import { HarmonyType } from "../types/HarmonyTypes";
 
-const colorHarmonies: Harmony[] = [
-  { name: "complementary", label: "Complementary" },
-  { name: "analogous", label: "Analogous" },
-  { name: "triad", label: "Triad" },
-  { name: "monochromatic", label: "Monochromatic" },
-  { name: "tetrad", label: "Tetrad" },
-  // { name: "splitcomplement", label: "Split Complement" },
-];
+// Define the enum
 
 interface HarmonyPickerProps {
-  onSelectHarmony: (harmony: Harmony) => void;
+  selectedHarmony: HarmonyType;
+  onHarmonyChange: (harmony: HarmonyType) => void;
 }
 
-const HarmonyPicker = ({ onSelectHarmony }: HarmonyPickerProps) => {
-  const [selectedHarmony, setSelectedHarmony] = useState<Harmony>(
-    colorHarmonies[0]
-  );
+const HarmonyPicker = ({
+  selectedHarmony,
+  onHarmonyChange,
+}: HarmonyPickerProps) => {
+  const harmonyOptions = Object.values(HarmonyType); // Directly use enum values
 
-  useEffect(() => {
-    const defaultHarmony = colorHarmonies[0];
-    onSelectHarmony(defaultHarmony);
-  }, []);
-
-  const onHarmonyChange = (event: SelectChangeEvent<string>) => {
-    //find the color harmony with the name that matches the event target value
-    const harmony = colorHarmonies.find(
-      (harmony) => harmony.name === event.target.value
-    ) as Harmony;
-    setSelectedHarmony(harmony);
-    onSelectHarmony(harmony);
+  const handleChange = (event: SelectChangeEvent<HarmonyType>) => {
+    onHarmonyChange(event.target.value as HarmonyType);
   };
 
   return (
-    <React.Fragment>
-      <Box className="harmonyPicker" sx={{ minWidth: 300 }}>
-        <FormControl sx={{ minWidth: 300 }}>
-          <InputLabel id="harmony-select-label">Color harmony</InputLabel>
-          <Select
-            labelId="harmony-select-label"
-            value={selectedHarmony.name}
-            label="Color harmony"
-            onChange={onHarmonyChange}
-          >
-            {colorHarmonies.map((harmony, index) => (
-              <MenuItem key={index} value={harmony.name}>
-                {harmony.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
-    </React.Fragment>
+    <FormControl fullWidth>
+      <InputLabel id="harmony-selector-label">Harmony Type</InputLabel>
+      <Select
+        labelId="harmony-selector-label"
+        id="harmony-selector"
+        value={selectedHarmony}
+        label="Harmony Type"
+        onChange={handleChange}
+      >
+        {harmonyOptions.map((harmony) => (
+          <MenuItem key={harmony} value={harmony}>
+            {harmony}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 };
 

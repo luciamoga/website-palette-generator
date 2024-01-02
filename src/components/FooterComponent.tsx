@@ -15,7 +15,7 @@ const FooterComponent = ({ navItems }: FooterComponentProps) => {
       <Typography variant="body2" color="text.secondary" align="center">
         {"Copyright © "}
         <Link color="inherit" to="https://mui.com/">
-          PopponColor
+          PoppinColor
         </Link>{" "}
         {new Date().getFullYear()}
         {"."}

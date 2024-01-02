@@ -21,7 +21,6 @@
     }
   }
 }
-//define style for larger screens
 @media (max-width: 1024px) {
   .pageContainer {
     .paletteGenerator {
@@ -30,7 +29,6 @@
   }
 }
 
-// define style for smaller screens
 @media (max-width: 768px) {
   .content {
     flex-direction: column;

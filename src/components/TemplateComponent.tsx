@@ -1,44 +1,37 @@
-//This is a template component that contains multiple templates from Material UI.
-
-import { Palette } from "../types/Palette";
+import { Harmony } from "../types/Harmonies/Harmony";
 import AlbumLayoutComponent from "./SampleTemplates/AlbumLayoutComponent";
 import PricingCompoenent from "./SampleTemplates/Pricing";
-import { ThemeProvider, createTheme } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 
 interface TemplateComponentProps {
-  palette: Palette;
+  harmony: Harmony;
 }
 
-const TemplateComponent = ({ palette }: TemplateComponentProps) => {
+const TemplateComponent = ({ harmony }: TemplateComponentProps) => {
   let themeSet = {
     palette: {
       primary: {
-        main: palette.primary.main.hex,
-        dark: palette.primary.variant?.hex,
-        contrastText: palette.primary.text?.hex,
+        main: harmony.primary.main.hex,
+        dark: harmony.primary.variant?.hex,
+        contrastText: harmony.primary.text?.hex,
       },
       secondary: {
-        main: palette.secondary.main.hex,
-        dark: palette.secondary.variant?.hex,
-        contrastText: palette.secondary.text?.hex,
+        main: harmony.secondary.main.hex,
+        dark: harmony.secondary.variant?.hex,
+        contrastText: harmony.secondary.text?.hex,
       },
       background: {
-        default: palette.background.main.hex,
-        paper: palette.surface.main.hex,
-        surface: palette.surface.main.hex,
+        default: harmony.background.main.hex,
+        paper: harmony.surface.main.hex,
+        surface: harmony.surface.main.hex,
       },
-      error: { main: palette.error.main.hex },
-
-      // warning: { main: palette.error.main.hex },
-      // info: { main: palette.error.main.hex },
-      // success: { main: palette.error.main.hex },
-
+      error: { main: harmony.error.main.hex },
       text: {
-        primary: palette.primary.text?.hex ? palette.primary.text?.hex : "#000",
-        background: palette.background.text?.hex,
-        surface: palette.surface.text?.hex,
-        secondary: palette.secondary.text?.hex
-          ? palette.secondary.text?.hex
+        primary: harmony.primary.text?.hex ? harmony.primary.text?.hex : "#000",
+        background: harmony.background.text?.hex,
+        surface: harmony.surface.text?.hex,
+        secondary: harmony.secondary.text?.hex
+          ? harmony.secondary.text?.hex
           : "#000",
       },
     },
@@ -48,12 +41,13 @@ const TemplateComponent = ({ palette }: TemplateComponentProps) => {
   return (
     <div className="templates">
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <div className="album">
           <AlbumLayoutComponent />
         </div>
-        <div className="pricing">
+        <Box className="pricing">
           <PricingCompoenent />
-        </div>
+        </Box>
       </ThemeProvider>
     </div>
   );

@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import "../style/contact.css";
 
 const email = "lmmweb2020@gmail.com";
@@ -17,7 +16,7 @@ const Section = ({ title, children }: SectionProps) => (
 
 const ContactPage = () => {
   return (
-    <Box className="contact">
+    <div className="contact">
       <h1>Say hi!</h1>
       <div className="sections">
         <Section title="About">
@@ -30,7 +29,7 @@ const ContactPage = () => {
           <a href={`mailto:${email}`}>Let me know</a>
         </Section>
       </div>
-    </Box>
+    </div>
   );
 };
 

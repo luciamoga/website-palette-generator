@@ -8,7 +8,6 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
@@ -23,7 +22,6 @@ const AlbumLayoutComponent = () => {
 
   return (
     <React.Fragment>
-      <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
           <CameraIcon sx={{ mr: 2 }} />
@@ -117,14 +115,7 @@ const AlbumLayoutComponent = () => {
                     >
                       View
                     </Button>
-                    {/* <Button
-                      sx={{
-                        color: "text.background",
-                      }}
-                      size="small"
-                    >
-                      Edit
-                    </Button> */}
+
                     <Switch color="secondary" defaultChecked />
                     <Button
                       variant="outlined"

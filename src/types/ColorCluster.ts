@@ -4,19 +4,21 @@ export class ColorCluster {
   main: Color;
   variant?: Color;
   text?: Color;
+  variantText?: Color;
 
-  constructor(main: Color, variant?: Color, text?: Color) {
+  constructor({ main, variant }: { main: Color; variant?: Color }) {
     this.main = main;
     this.variant = variant;
-    this.text = text;
+    this.text = main.getContrasting();
+    this.variantText = variant?.getContrasting();
   }
 
-  toObject() {
-    //merge the  this.main.toObject() with the this.variant.toObject() and this.text.toObject()
-    return Object.assign(
-      this.main.toObject(),
-      this.variant?.toObject(),
-      this.text?.toObject()
-    );
+  getColors() {
+    return {
+      main: this.main.hex,
+      variant: this.variant?.hex,
+      text: this.text?.hex,
+      variantText: this.variantText?.hex,
+    };
   }
 }

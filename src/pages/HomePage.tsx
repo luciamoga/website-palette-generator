@@ -1,10 +1,7 @@
 import ColorPicker from "../components/ColorPicker";
 import HarmonyPicker from "../components/HarmonyPicker";
-import PaletteComponent from "../components/Palette";
-import TemplateComponent from "../components/TemplateComponent";
-import { generatePalette } from "../components/utils/paletteGenerator";
+import PaletteComponent from "../components/PaletteComponent";
 import { Color } from "../types/Color";
-import { Harmony } from "../types/Harmony";
 import { Palette } from "../types/Palette";
 import "../style/style.css";
 import React, { useEffect, useState } from "react";
@@ -13,31 +10,43 @@ import CopyAllIcon from "@mui/icons-material/CopyAll";
 import { Button } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { HarmonyType } from "../types/HarmonyTypes";
+import TemplateComponent from "../components/TemplateComponent";
 const HomePage = () => {
   const [selectedColor, setSelectedColor] = useState<Color | null>(null);
-  const [selectedHarmony, setSelectedHarmony] = useState<Harmony | null>(null);
+  const [selectedHarmony, setSelectedHarmony] = useState<HarmonyType>(
+    HarmonyType.Complementary
+  );
+
+  const handleHarmonyChange = (harmony: HarmonyType) => {
+    setSelectedHarmony(harmony);
+    // Additional actions based on the selected harmony
+  };
   const [palette, setPalette] = useState<Palette>();
 
   const handleSelectColor = (color: Color) => {
     setSelectedColor(color);
   };
 
-  const handleSelectHarmony = (harmony: Harmony) => {
-    setSelectedHarmony(harmony);
-  };
   const handleCopyAll = () => {
-    navigator.clipboard.writeText(JSON.stringify(palette?.getColors()));
+    console.log("palette?.getColors()", palette?.getColors());
+    navigator.clipboard.writeText(
+      JSON.stringify(palette?.getColors(), undefined, 2)
+    );
     toast.info("Copied all colors");
   };
 
   useEffect(() => {
     if (selectedColor && selectedHarmony) {
-      const newPalette = generatePalette(selectedColor, selectedHarmony);
+      const newPalette = new Palette({
+        color: selectedColor,
+        harmonyType: selectedHarmony,
+      });
       setPalette(newPalette);
     }
   }, [selectedColor, selectedHarmony]);
 
-  const initialColor = new Color({ hex: "#a6a3ff", type: "primary" });
+  const initialColor = new Color({ hex: "#a6a3ff" });
 
   return (
     <React.Fragment>
@@ -48,7 +57,10 @@ const HomePage = () => {
             initialColor={initialColor}
             onSelectColor={handleSelectColor}
           />
-          <HarmonyPicker onSelectHarmony={handleSelectHarmony} />
+          <HarmonyPicker
+            selectedHarmony={selectedHarmony}
+            onHarmonyChange={handleHarmonyChange}
+          />
           <Button
             variant="text"
             onClick={handleCopyAll}
@@ -58,7 +70,7 @@ const HomePage = () => {
           </Button>
         </div>
         {palette ? (
-          <PaletteComponent palette={palette} />
+          <PaletteComponent harmony={palette.harmony} />
         ) : (
           <div>Loading...</div>
         )}
@@ -66,7 +78,7 @@ const HomePage = () => {
 
       <div className="example">
         {palette ? (
-          <TemplateComponent palette={palette} />
+          <TemplateComponent harmony={palette.harmony} />
         ) : (
           <div>Loading...</div>
         )}

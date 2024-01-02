@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "../style/header.css";
-import { Box } from "@mui/material";
 
 interface HeaderComponentProps {
   navItems: string[];
@@ -11,10 +10,10 @@ const HeaderComponent = ({ navItems, logo }: HeaderComponentProps) => {
   const logoBasePath = "/src/assets/";
 
   return (
-    <Box className="header">
+    <div className="header">
       <Link to={"/"}>
         <div className="logo">
-          PoppinColor
+          <p>PoppinColor</p>
           <img src={logoBasePath + logo} alt="logo" />
         </div>
       </Link>
@@ -25,7 +24,7 @@ const HeaderComponent = ({ navItems, logo }: HeaderComponentProps) => {
           </div>
         ))}
       </div>
-    </Box>
+    </div>
   );
 };
 
