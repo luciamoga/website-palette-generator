@@ -1,30 +1,21 @@
-# React + TypeScript + Vite
+# PoppinColor Palette Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to PoppinColor, a sophisticated and user-friendly tool designed to inspire creativity and enhance design workflows by simplifying the process of finding and applying the perfect color schemes for various creative projects.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+PoppinColor offers a range of features to make your color selection process intuitive and enjoyable:
 
-## Expanding the ESLint configuration
+- **Diverse Color Harmonies:** Choose from complementary, monochromatic, analogous, triadic, and more to find the harmony that fits your project.
+- **Interactive Palette Customization:** Adjust hue, saturation, and lightness to get the exact colors you need.
+- **Accessibility Checks:** Ensure your color choices are accessible and readable.
+- **Export Options:** Easily export your palette in various formats like HEX, RGB, and HSL.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+To use PoppinColor, simply clone the repository and follow the setup instructions below.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+```bash
+git clone https://github.com/yourusername/poppincolor.git
+cd poppincolor
+# Follow your project's setup instructions
